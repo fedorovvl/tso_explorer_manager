@@ -1,0 +1,135 @@
+﻿<Window x:Class="ExplorerManager.Result"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:ExplorerManager"
+        Title="TaskList" Height="397" Width="675" MinWidth="675" MaxWidth="675" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="212*" />
+            <RowDefinition Height="46" />
+        </Grid.RowDefinitions>
+        <TabControl Name="tabs" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Grid.Row="0" >
+            <TabItem Header="Исследователи">
+                <ListView Name="lvTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+                    <ListView.Resources>
+                        <l:OrdinalConverter x:Key="OrdinalConverter" />
+                        <DataTemplate x:Key="OrdinalColumnDataTemplate">
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem},
+                    Converter={StaticResource ResourceKey=OrdinalConverter}}" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <l:FixedWidthColumn Header="#" CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="30" FixedWidth="30" />
+                            <l:FixedWidthColumn Width="50" FixedWidth="50" Header="SK">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Sk}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </l:FixedWidthColumn>
+                            <l:FixedWidthColumn Width="250" FixedWidth="250" Header="Специалист">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Name}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </l:FixedWidthColumn>
+                            <l:FixedWidthColumn Header="Задание" Width="270" FixedWidth="270" >
+                                <GridViewColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock TextAlignment="Left" Margin="-95,3,0,0" Width="60" Text="Задание" />
+                                            <ComboBox Width="130" Margin="95,0,0,0" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                                                <ComboBoxItem Content="Пропустить" Tag="0"/>
+                                                <ComboBoxItem Content="Поиск сокровищ малый" Tag="1,0"/>
+                                                <ComboBoxItem Content="Поиск сокровищ средний" Tag="1,1"/>
+                                                <ComboBoxItem Content="Поиск сокровищ долгий" Tag="1,2"/>
+                                                <ComboBoxItem Content="Поиск сокровищ очень долгий" Tag="1,3"/>
+                                                <ComboBoxItem Content="Поиск сокровищ (длительный)" Tag="1,6"/>
+                                                <ComboBoxItem Content="Поиск приключений малый" Tag="2,0"/>
+                                                <ComboBoxItem Content="Поиск приключений средний" Tag="2,1"/>
+                                                <ComboBoxItem Content="Поиск приключений долгий" Tag="2,2"/>
+                                                <ComboBoxItem Content="Поиск приключений (очень долгий)" Tag="2,3"/>
+                                                <ComboBoxItem Content="Поиск артефактов" Tag="1,4"/>
+                                                <ComboBoxItem Content="Поиск редкостей" Tag="1,5"/>
+                                            </ComboBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.HeaderTemplate>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Width="180" ItemsSource="{Binding Path=Combo}" SelectedIndex="{Binding Path=selected}">
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </l:FixedWidthColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+            <TabItem Header="Геологи" >
+                <ListView Name="glvTable" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Row="0">
+                    <ListView.Resources>
+                        <l:OrdinalConverter x:Key="OrdinalConverter" />
+                        <DataTemplate x:Key="OrdinalColumnDataTemplate">
+                            <TextBlock Text="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListViewItem},
+                    Converter={StaticResource ResourceKey=OrdinalConverter}}" HorizontalAlignment="Center" />
+                        </DataTemplate>
+                    </ListView.Resources>
+                    <ListView.View>
+                        <GridView>
+                            <l:FixedWidthColumn Header="#" CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="30" FixedWidth="30" />
+                            <l:FixedWidthColumn Width="300" FixedWidth="300" Header="Специалист">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Name}" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </l:FixedWidthColumn>
+                            <l:FixedWidthColumn Header="Задание" Width="250" FixedWidth="250" >
+                                <GridViewColumn.HeaderTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <TextBlock TextAlignment="Left" Margin="-95,3,0,0" Width="60" Text="Задание" />
+                                            <ComboBox Width="130" Margin="95,0,0,0" SelectedIndex="0" Name="gCombo"  SelectionChanged="GComboBox_SelectionChanged" Initialized="GCombo_Initialized">
+                                                <ComboBoxItem Content="Пропустить" Tag="0"/>
+                                                <ComboBoxItem Content="Камень" Tag="0,0"/>
+                                                <ComboBoxItem Content="Медь" Tag="0,1"/>
+                                                <ComboBoxItem Content="Мрамор" Tag="0,2"/>
+                                                <ComboBoxItem Content="Железо" Tag="0,3"/>
+                                                <ComboBoxItem Content="Золото" Tag="0,4"/>
+                                                <ComboBoxItem Content="Уголь" Tag="0,5"/>
+                                                <ComboBoxItem Content="Гранит" Tag="0,6"/>
+                                                <ComboBoxItem Content="Титан" Tag="0,7"/>
+                                                <ComboBoxItem Content="Селитра" Tag="0,8"/>
+                                            </ComboBox>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.HeaderTemplate>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox Width="180" ItemsSource="{Binding Path=Combo}" SelectedIndex="{Binding Path=selected}">
+                                        </ComboBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </l:FixedWidthColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </TabItem>
+        </TabControl>
+
+
+        <Button Content="Отправить" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="60,10,0,4" Click="Button_Click_1" VerticalAlignment="Center" Width="118" />
+        <Button Content="Отмена" Height="23" HorizontalAlignment="Right" Margin="0,10,60,4" VerticalAlignment="Center" Width="75" Grid.Row="1" Click="Button_Click" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Center" Name="error" Visibility="Hidden" Foreground="Red" Text="Необходимо выбрать хотя бы 1 задание" VerticalAlignment="Top" Width="233" />
+        
+
+    </Grid>
+</Window>

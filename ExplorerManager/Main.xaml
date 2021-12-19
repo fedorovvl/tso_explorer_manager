@@ -1,0 +1,9 @@
+﻿<Window x:Class="ExplorerManager.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Explorer Manager" Height="173" Loaded="Window_Loaded"  Width="517" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <RichTextBox HorizontalAlignment="Stretch" FontStretch="Medium" IsDocumentEnabled="True" TextChanged="TextChanged" VerticalScrollBarVisibility="Auto" IsReadOnly="True" Name="richTextBox1" VerticalAlignment="Stretch" />
+        <Button Visibility="Collapsed" Content="Начать" Height="23" HorizontalAlignment="Stretch" Click="Click" Name="button1" VerticalAlignment="Stretch" Width="75" />
+    </Grid>
+</Window>
