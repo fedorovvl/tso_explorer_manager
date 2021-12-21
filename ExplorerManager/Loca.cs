@@ -181,6 +181,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "NT: On this search your explorer will find resources which you will need to recruit elite military units." },
                 { "FindAdventureZoneVeryLong", "NT: Adventure search (very long)" },
                 { "Cancel", "إلغاء" },
+                { "UnitSkillIsSpecialist", "متخصص" },
+                { "Send", "إرسال" },
+                { "Commands", "الأوامر" },
               }
             },
             { "cz-cz", new Dictionary<string, string>(){
@@ -310,6 +313,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Na tomto hledání bude váš průzkumník hledat suroviny potřebné k verbování elitních vojáků." },
                 { "FindAdventureZoneVeryLong", "Hledání dobr. (velmi dlouhé)" },
                 { "Cancel", "Zrušit" },
+                { "UnitSkillIsSpecialist", "Je specialista" },
+                { "Send", "Odeslat" },
+                { "Commands", "Rozkazy" },
               }
             },
             { "de-de", new Dictionary<string, string>(){
@@ -439,6 +445,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Auf dieser Suche wird Euer Entdecker Ressourcen finden, die Ihr zum Rekrutieren von Elite-Armeeeinheiten benötigt." },
                 { "FindAdventureZoneVeryLong", "Abenteuersuche (sehr lang)" },
                 { "Cancel", "Abbrechen" },
+                { "UnitSkillIsSpecialist", "Spezialist" },
+                { "Send", "Senden" },
+                { "Commands", "Befehle" },
               }
             },
             { "el-gr", new Dictionary<string, string>(){
@@ -568,6 +577,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Σ' αυτήν την αναζήτηση ο εξερευνητής σας θα βρει πόρους, τους οποίους χρειάζεστε για να στρατολογήσετε επίλεκτες στρατιωτικές μονάδες." },
                 { "FindAdventureZoneVeryLong", "Αναζήτηση περιπ. (πολύ μεγάλη)" },
                 { "Cancel", "Ακύρωση" },
+                { "UnitSkillIsSpecialist", "Ειδικός" },
+                { "Send", "Αποστολή" },
+                { "Commands", "Εντολές" },
               }
             },
             { "en-au", new Dictionary<string, string>(){
@@ -697,6 +709,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "NT: On this search your explorer will find resources which you will need to recruit elite military units." },
                 { "FindAdventureZoneVeryLong", "NT: Adventure search (very long)" },
                 { "Cancel", "Cancel" },
+                { "UnitSkillIsSpecialist", "Is specialist" },
+                { "Send", "Send" },
+                { "Commands", "Commands" },
               }
             },
             { "en-uk", new Dictionary<string, string>(){
@@ -826,6 +841,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "On this search, your explorer will find resources you can use to recruit elite military units." },
                 { "FindAdventureZoneVeryLong", "Adventure search (very long)" },
                 { "Cancel", "Cancel" },
+                { "UnitSkillIsSpecialist", "Is specialist" },
+                { "Send", "Send" },
+                { "Commands", "Commands" },
               }
             },
             { "en-us", new Dictionary<string, string>(){
@@ -955,6 +973,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "On this search, your explorer will find resources you can use to recruit elite military units." },
                 { "FindAdventureZoneVeryLong", "Adventure search (very long)" },
                 { "Cancel", "Cancel" },
+                { "UnitSkillIsSpecialist", "Is specialist" },
+                { "Send", "Send" },
+                { "Commands", "Commands" },
               }
             },
             { "es-es", new Dictionary<string, string>(){
@@ -1084,6 +1105,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "En esta búsqueda, tu explorador encontrará recursos que necesitarás para reclutar unidades militares de élite." },
                 { "FindAdventureZoneVeryLong", "Búsqueda aventura (muy larga)" },
                 { "Cancel", "Cancelar" },
+                { "UnitSkillIsSpecialist", "Es especialista" },
+                { "Send", "Enviar" },
+                { "Commands", "Comandos" },
               }
             },
             { "es-mx", new Dictionary<string, string>(){
@@ -1213,6 +1237,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "En esta búsqueda, tu explorador encontrará recursos que necesitarás para reclutar unidades militares de élite." },
                 { "FindAdventureZoneVeryLong", "Búsqueda aventura (muy larga)" },
                 { "Cancel", "Cancelar" },
+                { "UnitSkillIsSpecialist", "Es especialista" },
+                { "Send", "Enviar" },
+                { "Commands", "Comandos" },
               }
             },
             { "fr-fr", new Dictionary<string, string>(){
@@ -1342,6 +1369,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Lors de cette expédition, votre explorateur découvrira des ressources nécessaires pour recruter des unités militaires d'élite." },
                 { "FindAdventureZoneVeryLong", "Recherche d'aventure (extrême)" },
                 { "Cancel", "Annuler" },
+                { "UnitSkillIsSpecialist", "Spécialiste" },
+                { "Send", "Envoyer" },
+                { "Commands", "Ordres" },
               }
             },
             { "it-it", new Dictionary<string, string>(){
@@ -1471,6 +1501,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Con questa ricerca l'esploratore troverà le risorse che ti occorrono per arruolare unità militari scelte." },
                 { "FindAdventureZoneVeryLong", "Ricerca avventura (molto lunga)" },
                 { "Cancel", "Annulla" },
+                { "UnitSkillIsSpecialist", "È uno specialista" },
+                { "Send", "Invia" },
+                { "Commands", "Comandi" },
               }
             },
             { "nl-nl", new Dictionary<string, string>(){
@@ -1600,6 +1633,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Tijdens deze zoektocht zal je verkenner grondstoffen vinden die je nodig hebt om militaire elite-eenheden te rekruteren." },
                 { "FindAdventureZoneVeryLong", "Avonturenzoektocht (zeer lang)" },
                 { "Cancel", "Annuleren" },
+                { "UnitSkillIsSpecialist", "Is specialist" },
+                { "Send", "Verzend" },
+                { "Commands", "Bevelen" },
               }
             },
             { "pl-pl", new Dictionary<string, string>(){
@@ -1729,6 +1765,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Podczas tych poszukiwań twój odkrywca znajdzie zasoby potrzebne do rekrutacji elitarnych jednostek wojskowych." },
                 { "FindAdventureZoneVeryLong", "Szuk. przygód (b.długie)" },
                 { "Cancel", "Anuluj" },
+                { "UnitSkillIsSpecialist", "Jest specjalistą" },
+                { "Send", "Wyślij" },
+                { "Commands", "Polecenia" },
               }
             },
             { "pt-br", new Dictionary<string, string>(){
@@ -1858,6 +1897,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "Nesta busca, seu explorador encontrará recursos que serão necessários para recrutar unidades militares de elite." },
                 { "FindAdventureZoneVeryLong", "Busca - Aventura (bem longa)" },
                 { "Cancel", "Cancelar" },
+                { "UnitSkillIsSpecialist", "Especialista" },
+                { "Send", "Enviar" },
+                { "Commands", "Ordens" },
               }
             },
             { "ro-ro", new Dictionary<string, string>(){
@@ -1987,6 +2029,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "În această căutare exploratorul tău va găsi resurse necesare pentru unități de elită." },
                 { "FindAdventureZoneVeryLong", "Căutare foarte lungă de aventuri" },
                 { "Cancel", "Anulează" },
+                { "UnitSkillIsSpecialist", "E specialist" },
+                { "Send", "Trimite" },
+                { "Commands", "Comenzi" },
               }
             },
             { "ru-ru", new Dictionary<string, string>(){
@@ -2116,6 +2161,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "В ходе этих поисков ваш исследователь обнаружит ресурсы, которые нужны для найма элитных регулярных войск." },
                 { "FindAdventureZoneVeryLong", "Поиск приключения (очень долгий)" },
                 { "Cancel", "Отмена" },
+                { "UnitSkillIsSpecialist", "Специалист" },
+                { "Send", "Отправить" },
+                { "Commands", "Команды" },
               }
             },
             { "tr-tr", new Dictionary<string, string>(){
@@ -2245,6 +2293,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "NT: On this search your explorer will find resources which you will need to recruit elite military units." },
                 { "FindAdventureZoneVeryLong", "NT: Adventure search (very long)" },
                 { "Cancel", "İptal Et" },
+                { "UnitSkillIsSpecialist", "Uzman" },
+                { "Send", "Gönder" },
+                { "Commands", "Komutlar" },
               }
             },
             { "zh-cn", new Dictionary<string, string>(){
@@ -2374,6 +2425,9 @@ namespace ExplorerManager
                 { "FindTreasureProlongedDescription", "这次寻宝之旅中，你的探险家将寻找能够生产精英军事单位的资源。" },
                 { "FindAdventureZoneVeryLong", "寻找冒险（极长）" },
                 { "Cancel", "取消" },
+                { "UnitSkillIsSpecialist", "是专家" },
+                { "Send", "发送" },
+                { "Commands", "命令" },
               }
             },
             //end

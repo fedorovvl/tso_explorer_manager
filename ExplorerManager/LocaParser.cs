@@ -81,7 +81,14 @@ namespace ExplorerManager
                     result.Add(t_item.Attributes["id"].Value, t_item.Attributes["text"].Value);
             XmlNode item = XmlDocument.DocumentElement.SelectSingleNode("/oasis/translations/s[@name='LAB']/t[@id='Cancel']");
             result.Add(item.Attributes["id"].Value, item.Attributes["text"].Value);
+            item = XmlDocument.DocumentElement.SelectSingleNode("/oasis/translations/s[@name='LAB']/t[@id='UnitSkillIsSpecialist']");
+            result.Add(item.Attributes["id"].Value, item.Attributes["text"].Value);
+            item = XmlDocument.DocumentElement.SelectSingleNode("/oasis/translations/s[@name='LAB']/t[@id='Send']");
+            result.Add(item.Attributes["id"].Value, item.Attributes["text"].Value);
+            item = XmlDocument.DocumentElement.SelectSingleNode("/oasis/translations/s[@name='LAB']/t[@id='Commands']");
+            result.Add(item.Attributes["id"].Value, item.Attributes["text"].Value);
             return result;
         }
+        
     }
 }

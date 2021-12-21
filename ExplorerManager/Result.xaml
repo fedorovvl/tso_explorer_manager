@@ -33,7 +33,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </l:FixedWidthColumn>
-                            <l:FixedWidthColumn Width="250" FixedWidth="250" Header="Специалист">
+                            <l:FixedWidthColumn Width="250" FixedWidth="250" x:Name="explspec" Header="Специалист">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Name}" />
@@ -85,7 +85,7 @@
                     <ListView.View>
                         <GridView>
                             <l:FixedWidthColumn Header="#" CellTemplate="{StaticResource ResourceKey=OrdinalColumnDataTemplate}" Width="30" FixedWidth="30" />
-                            <l:FixedWidthColumn Width="300" FixedWidth="300" Header="Специалист">
+                            <l:FixedWidthColumn Width="300" FixedWidth="300" x:Name="geospec" Header="Специалист">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="{Binding Path=Name}" />
@@ -126,8 +126,8 @@
         </TabControl>
 
 
-        <Button Content="Отправить" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="60,10,0,4" Click="Button_Click_1" VerticalAlignment="Center" Width="118" />
-        <Button Content="Отмена" Height="23" HorizontalAlignment="Right" Margin="0,10,60,4" VerticalAlignment="Center" Width="75" Grid.Row="1" Click="Button_Click" />
+        <Button Content="Отправить" x:Name="bsend" Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="60,10,0,4" Click="Button_Click_1" VerticalAlignment="Center" Width="118" />
+        <Button Content="Отмена" x:Name="bcancel" Height="23" HorizontalAlignment="Right" Margin="0,10,60,4" VerticalAlignment="Center" Width="75" Grid.Row="1" Click="Button_Click" />
         <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Center" Name="error" Visibility="Hidden" Foreground="Red" Text="Необходимо выбрать хотя бы 1 задание" VerticalAlignment="Top" Width="233" />
         
 

@@ -30,6 +30,7 @@ namespace ExplorerManager
         public static string filename = "explorers.xml";
         public static bool autostart = false;
         public static string lang = "ru-ru";
+        public static bool genloca = false;
         private XmlSerializer _serializer = new XmlSerializer(typeof(SavedItem[]), new XmlRootAttribute("Dictionary"));
         public Main()
         {
@@ -40,7 +41,7 @@ namespace ExplorerManager
                 filename = App.cmd["config"].Trim();
             if (App.cmd["autostart"] != null)
                 autostart = true;
-            if (App.cmd["genloca"] != null)
+            if (genloca)
             {
                 new LocaParser();
                 Application.Current.Shutdown();
