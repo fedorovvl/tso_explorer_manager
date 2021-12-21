@@ -29,6 +29,7 @@ namespace ExplorerManager
         public static Cookie session = new Cookie();
         public static string filename = "explorers.xml";
         public static bool autostart = false;
+        public static string lang = "ru-ru";
         private XmlSerializer _serializer = new XmlSerializer(typeof(SavedItem[]), new XmlRootAttribute("Dictionary"));
         public Main()
         {
@@ -39,6 +40,16 @@ namespace ExplorerManager
                 filename = App.cmd["config"].Trim();
             if (App.cmd["autostart"] != null)
                 autostart = true;
+            if (App.cmd["genloca"] != null)
+            {
+                new LocaParser();
+                Application.Current.Shutdown();
+            }
+            if (App.cmd["lang"] != null)
+            {
+                if (Loca.locaData.ContainsKey(App.cmd["lang"]))
+                    lang = App.cmd["lang"];
+            }
         }
 
         Assembly AssemblyResolve(object sender, ResolveEventArgs args)

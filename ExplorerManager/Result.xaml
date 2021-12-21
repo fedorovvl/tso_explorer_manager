@@ -45,7 +45,7 @@
                                     <DataTemplate>
                                         <Grid>
                                             <TextBlock TextAlignment="Left" Margin="-95,3,0,0" Width="60" Text="Задание" />
-                                            <ComboBox Width="130" Margin="95,0,0,0" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                                            <ComboBox  Width="130" Margin="95,0,0,0" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Initialized="ComboBox_Initialized">
                                                 <ComboBoxItem Content="Пропустить" Tag="0"/>
                                                 <ComboBoxItem Content="Поиск сокровищ малый" Tag="1,0"/>
                                                 <ComboBoxItem Content="Поиск сокровищ средний" Tag="1,1"/>

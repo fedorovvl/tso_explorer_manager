@@ -71,7 +71,7 @@ namespace ExplorerManager
                 else { return null; }
             } catch(Exception e)
             {
-                File.WriteAllText("error.txt", e.Message + "\n" + e.StackTrace);
+                File.WriteAllText("error.txt", e.Message + "\r\n" + e.StackTrace);
                 MessageBox.Show("Критическая ошибка при отправке запроса! Лог ошибки в файле error.txt");
                 Environment.Exit(1);
             }
@@ -146,30 +146,29 @@ namespace ExplorerManager
         {
             Log.Write("Обрабатываем список специалистов");
             
-            int[] validTypes = new int[22] { 1, 4, 10, 17, 28, 32, 39, 41, 44, 46, 48, 51, 53, 55, 58, 61, 65, 66, 68, 69, 70, 74 };
-            int[] validGeolog = new int[14] { 2, 5, 26, 34, 35, 38, 40, 42, 45, 49, 59, 62, 71, 73 };
             playerLevel = (headers.playersOnMap[0] as dPlayerVO).playerLevel;
             OnLogHandler("Уровень игрока - " + playerLevel.ToString());
             
             foreach (dSpecialistVO spec in headers.specialists_vector)
             {
                 bool art = false, bea = false;
-                foreach(SkillVO skill in spec.skills)
+                foreach (SkillVO skill in spec.skills)
                 {
                     if (skill.id == 39)
                         art = true;
                     if (skill.id == 40)
                         bea = true;
                 }
-                int specType = validTypes.Contains(spec.specialistType) ? 0 : validGeolog.Contains(spec.specialistType) ? 1 : 0;
-                if ((validTypes.Contains(spec.specialistType) || validGeolog.Contains(spec.specialistType)) && spec.task == null)
+                int specType = Loca.explorers.ContainsKey(spec.specialistType) ? 0 : Loca.geologists.ContainsKey(spec.specialistType) ? 1 : 0;
+                if ((Loca.explorers.ContainsKey(spec.specialistType) || Loca.geologists.ContainsKey(spec.specialistType)) && spec.task == null)
                 {
+                    string name = Loca.explorers.ContainsKey(spec.specialistType) ? Loca.explorers[spec.specialistType] : Loca.geologists.ContainsKey(spec.specialistType) ? Loca.geologists[spec.specialistType] : "Unknown";
                     validExpls.Add(
                         new Explorer()
                         {
                             id = spec.uniqueID.uniqueID1,
                             id2 = spec.uniqueID.uniqueID2,
-                            name = (!string.IsNullOrEmpty(spec.name_string) ? spec.name_string : Loca.loca.ContainsKey(spec.specialistType) ? Loca.loca[spec.specialistType] : "Unknown"),
+                            name = (!string.IsNullOrEmpty(spec.name_string) ? spec.name_string : Loca.locaData[Main.lang].ContainsKey(name) ? Loca.locaData[Main.lang][name] : name),
                             type = spec.specialistType,
                             specType = specType,
                             artefact = art,

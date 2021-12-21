@@ -26,6 +26,29 @@ namespace ExplorerManager
             InitializeComponent();
         }
 
+
+        public List<ComboBoxItem> genExplCombo(Explorer expl)
+        {
+            List<ComboBoxItem> result = new List<ComboBoxItem>()
+            {
+                new ComboBoxItem() { Content = Loca.locaData[Main.lang]["Cancel"], Tag = "0" },
+                new ComboBoxItem() { Content = string.Format("{0} {1}", Loca.locaData[Main.lang]["FindTreasure"], Loca.locaData[Main.lang]["FindTreasureShort"]), Tag = "1,0" },
+                new ComboBoxItem() { Content = string.Format("{0} {1}", Loca.locaData[Main.lang]["FindTreasure"], Loca.locaData[Main.lang]["FindTreasureMedium"]), Tag = "1,1" },
+                new ComboBoxItem() { Content = string.Format("{0} {1}", Loca.locaData[Main.lang]["FindTreasure"], Loca.locaData[Main.lang]["FindTreasureLong"]), Tag = "1,2" },
+                new ComboBoxItem() { Content = string.Format("{0} {1}", Loca.locaData[Main.lang]["FindTreasure"], Loca.locaData[Main.lang]["FindTreasureEvenLonger"]), Tag = "1,3" },
+                new ComboBoxItem() { Content = string.Format("{0} {1}", Loca.locaData[Main.lang]["FindTreasure"], Loca.locaData[Main.lang]["FindTreasureLongest"]), Tag = "1,6" },
+                new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneShort"], Tag = "2,0" },
+                new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneMedium"], Tag = "2,1" },
+                new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneLong"], Tag = "2,2" },
+                new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneVeryLong"], Tag = "2,3" }
+            };
+            if (expl.artefact)
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindTreasureTravellingErudite"], Tag = "1,4" });
+            if (expl.beans)
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindTreasureBeanACollada"], Tag = "1,5" });
+            return result;
+        }
+
         private void addExpl(Explorer expl, List<SavedItem> saved)
         {
             Item item = new Item()
@@ -33,31 +56,9 @@ namespace ExplorerManager
                 Id = expl.id,
                 Id2 = expl.id2,
                 Name = expl.name,
-                Combo = new List<ComboBoxItem>() {
-                                new ComboBoxItem() { Content = "Пропустить", Tag = "0" },
-                                new ComboBoxItem() { Content = "Поиск сокровищ малый", Tag = "1,0" },
-                                new ComboBoxItem() { Content = "Поиск сокровищ средний", Tag = "1,1" },
-                                new ComboBoxItem() { Content = "Поиск сокровищ долгий", Tag = "1,2" },
-                                new ComboBoxItem() { Content = "Поиск сокровищ очень долгий", Tag = "1,3" },
-                                new ComboBoxItem() { Content = "Поиск сокровищ (длительный)", Tag = "1,6" },
-                                new ComboBoxItem() { Content = "Поиск приключений малый", Tag = "2,0" },
-                                new ComboBoxItem() { Content = "Поиск приключений средний", Tag = "2,1" },
-                                new ComboBoxItem() { Content = "Поиск приключений долгий", Tag = "2,2" },
-                                new ComboBoxItem() { Content = "Поиск приключений (очень долгий)", Tag = "2,3" }
-                            }
+                Combo = genExplCombo(expl)
             };
-            string[] skills = new string[2] { "-", "-" };
-            if (expl.artefact)
-            {
-                item.Combo.Add(new ComboBoxItem() { Content = "Поиск артефактов", Tag = "1,4" });
-                skills[0] = "a";
-            }
-            if (expl.beans)
-            {
-                item.Combo.Add(new ComboBoxItem() { Content = "Поиск редкостей", Tag = "1,5" });
-                skills[1] = "b";
-            }
-            item.Sk = string.Join(" / ", skills);
+            item.Sk = string.Join(" / ", new string[2] { expl.artefact ? "a" : "-", expl.beans ? "b" : "-" });
             item.selected = saved.Any(x => x.Key == expl.id + "_" + expl.id2) ? saved.Single(x => x.Key == expl.id + "_" + expl.id2).Value : 0;
             Items.Add(item);
         }
@@ -65,25 +66,25 @@ namespace ExplorerManager
         public List<ComboBoxItem> genGeoCombo()
         {
             List<ComboBoxItem> result = new List<ComboBoxItem>() {
-                 new ComboBoxItem() { Content = "Пропустить", Tag = "0" },
-                 new ComboBoxItem() { Content = "Камень", Tag = "0,0" }
+                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["Cancel"], Tag = "0" },
+                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositStone"], Tag = "0,0" }
             };
             if (playerLevel >= 9)
-                result.Add(new ComboBoxItem() { Content = "Медь", Tag = "0,1" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositBronzeOre"], Tag = "0,1" });
             if (playerLevel >= 17)
-                result.Add(new ComboBoxItem() { Content = "Мрамор", Tag = "0,2" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositMarble"], Tag = "0,2" });
             if (playerLevel >= 18)
-                result.Add(new ComboBoxItem() { Content = "Железо", Tag = "0,3" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositIronOre"], Tag = "0,3" });
             if (playerLevel >= 23)
-                result.Add(new ComboBoxItem() { Content = "Золото", Tag = "0,4" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositGoldOre"], Tag = "0,4" });
             if (playerLevel >= 24)
-                result.Add(new ComboBoxItem() { Content = "Уголь", Tag = "0,5" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositCoal"], Tag = "0,5" });
             if (playerLevel >= 60)
-                result.Add(new ComboBoxItem() { Content = "Гранит", Tag = "0,6" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositGranite"], Tag = "0,6" });
             if (playerLevel >= 61)
-                result.Add(new ComboBoxItem() { Content = "Титан", Tag = "0,7" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositAlloyOre"], Tag = "0,7" });
             if (playerLevel >= 62)
-                result.Add(new ComboBoxItem() { Content = "Селитра", Tag = "0,8" });
+                result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindDepositSalpeter"], Tag = "0,8" });
             return result;
         }
         private void addGeo(Explorer expl, List<SavedItem> saved)
@@ -249,6 +250,7 @@ namespace ExplorerManager
 
         private void GCombo_Initialized(object sender, System.EventArgs e)
         {
+            List<ComboBoxItem> list = genGeoCombo();
             if (playerLevel < 62)
                 (sender as ComboBox).Items.RemoveAt(9);
             if (playerLevel < 61)
@@ -265,8 +267,20 @@ namespace ExplorerManager
                 (sender as ComboBox).Items.RemoveAt(3);
             if (playerLevel < 9)
                 (sender as ComboBox).Items.RemoveAt(2);
+            foreach(ComboBoxItem item in (sender as ComboBox).Items)
+            {
+                item.Content = list[(sender as ComboBox).Items.IndexOf(item)].Content;
+            }
         }
 
+        private void ComboBox_Initialized(object sender, System.EventArgs e)
+        {
+            List<ComboBoxItem> list = genExplCombo(new Explorer() { beans = true, artefact = true });
+            foreach (ComboBoxItem item in (sender as ComboBox).Items)
+            {
+                item.Content = list[(sender as ComboBox).Items.IndexOf(item)].Content;
+            }
+        }
     }
 
     public class Item

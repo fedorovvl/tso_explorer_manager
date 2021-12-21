@@ -97,6 +97,7 @@
     <Compile Include="Arguments.cs" />
     <Compile Include="dServerCall.cs" />
     <Compile Include="Loca.cs" />
+    <Compile Include="LocaParser.cs" />
     <Compile Include="PostSubmitter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
