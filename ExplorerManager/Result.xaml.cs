@@ -42,12 +42,13 @@ namespace ExplorerManager
                 new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureMedium"]), Tag = "1,1" },
                 new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLong"]), Tag = "1,2" },
                 new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureEvenLonger"]), Tag = "1,3" },
-                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLongest"]), Tag = "1,6" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneShort"], Tag = "2,0" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneMedium"], Tag = "2,1" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneLong"], Tag = "2,2" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneVeryLong"], Tag = "2,3" }
             };
+            if (playerLevel >= 54)
+                result.Add(new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLongest"]), Tag = "1,6" });
             if (expl.artefact)
                 result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindTreasureTravellingErudite"], Tag = "1,4" });
             if (expl.beans)
@@ -141,80 +142,52 @@ namespace ExplorerManager
             this.DialogResult = false;
         }
 
+        private void proceedItem(Item item, ref ResultRow rItem)
+        {
+            ComboBoxItem currentItem;
+            try
+            {
+                currentItem = item.Combo.Single(x => x.IsSelected == true);
+            }
+            catch (System.Exception exx)
+            {
+                currentItem = item.Combo.ElementAt(item.selected);
+            }
+            int index = item.Combo.IndexOf(currentItem);
+            SaveResults.Add(new SavedItem() { Key = item.Id + "_" + item.Id2, Value = index, Name = item.Name });
+            string selectedTag = currentItem.Tag.ToString();
+            if (selectedTag == "0")
+                return;
+            string[] selectedTags = selectedTag.Split(new[] { ',' });
+            rItem.id = item.Id;
+            rItem.id2 = item.Id2;
+            rItem.name = item.Name;
+            rItem.type = int.Parse(selectedTags[0]);
+            rItem.task = int.Parse(selectedTags[1]);
+            rItem.taskName = currentItem.Content.ToString();
+            Results.Add(rItem);
+        }
+
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            foreach(Item item in lvTable.Items)
+            try
             {
-                ResultRow rItem = new ResultRow()
+                foreach (Item item in lvTable.Items)
                 {
-                    id = item.Id,
-                    id2 = item.Id2,
-                    name = item.Name,
-                    specType = 0
-                };
-                try
-                {
-                    ComboBoxItem currentItem;
-                    try
-                    {
-                        currentItem = item.Combo.Single(x => x.IsSelected == true);
-                    }
-                    catch (System.Exception exx)
-                    {
-                        currentItem = item.Combo.ElementAt(item.selected);
-                    }
-                    int index = item.Combo.IndexOf(currentItem);
-                    SaveResults.Add(new SavedItem() { Key = item.Id + "_" + item.Id2, Value = index, Name = item.Name });
-                    string selectedTag = currentItem.Tag.ToString();
-                    if (selectedTag == "0")
-                        continue;
-                    string[] selectedTags = selectedTag.Split(new[] { ',' });
-                    rItem.type = int.Parse(selectedTags[0]);
-                    rItem.task = int.Parse(selectedTags[1]);
-                    rItem.taskName = currentItem.Content.ToString();
-                    Results.Add(rItem);
-                } catch (System.Exception ex)
-                {
-                    throw ex;
+                    ResultRow rItem = new ResultRow() { specType = 0 };
+                    proceedItem(item, ref rItem);
                 }
-                
-            }
-            foreach (Item item in glvTable.Items)
-            {
-                ResultRow rItem = new ResultRow()
+                foreach (Item item in glvTable.Items)
                 {
-                    id = item.Id,
-                    id2 = item.Id2,
-                    name = item.Name,
-                    specType = 1
-                };
-                try
-                {
-                    ComboBoxItem currentItem;
-                    try
-                    {
-                        currentItem = item.Combo.Single(x => x.IsSelected == true);
-                    }
-                    catch (System.Exception exx)
-                    {
-                        currentItem = item.Combo.ElementAt(item.selected);
-                    }
-                    int index = item.Combo.IndexOf(currentItem);
-                    SaveResults.Add(new SavedItem() { Key = item.Id + "_" + item.Id2, Value = index, Name = item.Name });
-                    string selectedTag = currentItem.Tag.ToString();
-                    if (selectedTag == "0")
-                        continue;
-                    string[] selectedTags = selectedTag.Split(new[] { ',' });
-                    rItem.type = int.Parse(selectedTags[0]);
-                    rItem.task = int.Parse(selectedTags[1]);
-                    rItem.taskName = currentItem.Content.ToString();
-                    Results.Add(rItem);
-                }
-                catch (System.Exception ex)
-                {
-                    throw ex;
+                    ResultRow rItem = new ResultRow() { specType = 1 };
+                    proceedItem(item, ref rItem);
                 }
             }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+
             if (Results.Count == 0)
             {
                 error.Visibility = System.Windows.Visibility.Visible;
@@ -281,6 +254,8 @@ namespace ExplorerManager
 
         private void ComboBox_Initialized(object sender, System.EventArgs e)
         {
+            if (playerLevel < 54)
+                (sender as ComboBox).Items.RemoveAt(6);
             List<ComboBoxItem> list = genExplCombo(new Explorer() { beans = true, artefact = true });
             foreach (ComboBoxItem item in (sender as ComboBox).Items)
             {

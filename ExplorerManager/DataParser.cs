@@ -114,7 +114,7 @@ namespace ExplorerManager
             foreach (ResultRow row in ResData)
             {
                 i++;
-                OnLogHandler(i + "/" + count + " Отправляем " + row.name + " " + (row.specType == 0 ? "в" : "искать") + " " + row.taskName);
+                OnLogHandler(i + "/" + count + " " + Loca.locaData[Main.lang]["Send"] + " " + row.name + " " + row.taskName);
                 dServerAction action = new dServerAction()
                 {
                     grid = 0,
