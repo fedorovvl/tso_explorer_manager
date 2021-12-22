@@ -38,17 +38,17 @@ namespace ExplorerManager
             List<ComboBoxItem> result = new List<ComboBoxItem>()
             {
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["Cancel"], Tag = "0" },
-                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureShort"]), Tag = "1,0" },
-                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureMedium"]), Tag = "1,1" },
-                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLong"]), Tag = "1,2" },
-                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureEvenLonger"]), Tag = "1,3" },
+                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureShort"].Replace("Поиск ", "")), Tag = "1,0" },
+                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureMedium"].Replace("Поиск ", "")), Tag = "1,1" },
+                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLong"].Replace("Поиск ", "")), Tag = "1,2" },
+                new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureEvenLonger"].Replace("Поиск ", "")), Tag = "1,3" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneShort"], Tag = "2,0" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneMedium"], Tag = "2,1" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneLong"], Tag = "2,2" },
                 new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindAdventureZoneVeryLong"], Tag = "2,3" }
             };
             if (playerLevel >= 54)
-                result.Add(new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLongest"]), Tag = "1,6" });
+                result.Add(new ComboBoxItem() { Content = string.Format("{0}{1}", Main.lang == "ru-ru" ? Loca.locaData[Main.lang]["FindTreasure"] + " " : "", Loca.locaData[Main.lang]["FindTreasureLongest"].Replace("Поиск ", "")), Tag = "1,6" });
             if (expl.artefact)
                 result.Add(new ComboBoxItem() { Content = Loca.locaData[Main.lang]["FindTreasureTravellingErudite"], Tag = "1,4" });
             if (expl.beans)
