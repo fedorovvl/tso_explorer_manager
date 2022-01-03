@@ -148,7 +148,7 @@ namespace ExplorerManager
                 bool found = false;
                 foreach (Process theprocess in processlist)
                 {
-                    if (theprocess.MainWindowTitle == "The Settlers Online")
+                    if (theprocess.MainWindowTitle.Contains("The Settlers Online"))
                     {
                         found = true;
                         using (ManagementObjectSearcher searcher = new ManagementObjectSearcher("SELECT CommandLine FROM Win32_Process WHERE ProcessId = " + theprocess.Id))
