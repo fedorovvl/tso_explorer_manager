@@ -96,6 +96,7 @@
     <Compile Include="AmfReader.cs" />
     <Compile Include="Arguments.cs" />
     <Compile Include="dServerCall.cs" />
+    <Compile Include="ExceptionDumper.cs" />
     <Compile Include="Loca.cs" />
     <Compile Include="LocaParser.cs" />
     <Compile Include="PostSubmitter.cs" />

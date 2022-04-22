@@ -36,6 +36,7 @@ namespace ExplorerManager
         {
             InitializeComponent();
             AppDomain.CurrentDomain.AssemblyResolve += new ResolveEventHandler(AssemblyResolve);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             Log.Write("Старт");
             if (App.cmd["config"] != null)
                 filename = App.cmd["config"].Trim();
@@ -51,6 +52,10 @@ namespace ExplorerManager
                 if (Loca.locaData.ContainsKey(App.cmd["lang"]))
                     lang = App.cmd["lang"];
             }
+        }
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            ExceptionDumper.DumpException(e.ExceptionObject as Exception);
         }
 
         Assembly AssemblyResolve(object sender, ResolveEventArgs args)
